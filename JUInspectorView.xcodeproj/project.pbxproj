@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E975D7F913F66D33006186C6 /* JUInspectorViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = E975D7F813F66D33006186C6 /* JUInspectorViewContainer.m */; };
+		E98DE5CD13F7D266009F3EE2 /* JUInspectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98DE5CC13F7D266009F3EE2 /* JUInspectorView.m */; };
+		E9E70F4713F5C8B200479B24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E70F4613F5C8B200479B24 /* Cocoa.framework */; };
+		E9E70F5313F5C8B300479B24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E70F5213F5C8B300479B24 /* main.m */; };
+		E9E70F5A13F5C8B300479B24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E70F5913F5C8B300479B24 /* AppDelegate.m */; };
+		E9E70F5D13F5C8B300479B24 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E70F5B13F5C8B300479B24 /* MainMenu.xib */; };
+		E9E70F6613F5C9C200479B24 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E975D7F713F66D33006186C6 /* JUInspectorViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorViewContainer.h; sourceTree = "<group>"; };
+		E975D7F813F66D33006186C6 /* JUInspectorViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewContainer.m; sourceTree = "<group>"; };
+		E98DE5CB13F7D266009F3EE2 /* JUInspectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorView.h; sourceTree = "<group>"; };
+		E98DE5CC13F7D266009F3EE2 /* JUInspectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorView.m; sourceTree = "<group>"; };
+		E9E70F4213F5C8B200479B24 /* JUInspectorView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JUInspectorView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9E70F4613F5C8B200479B24 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E9E70F4913F5C8B200479B24 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E9E70F4A13F5C8B200479B24 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E9E70F4B13F5C8B200479B24 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E9E70F4E13F5C8B200479B24 /* JUInspectorView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JUInspectorView-Info.plist"; sourceTree = "<group>"; };
+		E9E70F5213F5C8B300479B24 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E9E70F5413F5C8B300479B24 /* JUInspectorView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JUInspectorView-Prefix.pch"; sourceTree = "<group>"; };
+		E9E70F5813F5C8B300479B24 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9E70F5913F5C8B300479B24 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9E70F5C13F5C8B300479B24 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E9E70F6413F5C9C200479B24 /* JUInspectorViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorViewHeader.h; sourceTree = "<group>"; };
+		E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewHeader.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9E70F3F13F5C8B200479B24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E70F4713F5C8B200479B24 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9E70F3713F5C8B000479B24 = {
+			isa = PBXGroup;
+			children = (
+				E9E70F6313F5C94E00479B24 /* Source */,
+				E9E70F4C13F5C8B200479B24 /* JUInspectorView */,
+				E9E70F4513F5C8B200479B24 /* Frameworks */,
+				E9E70F4313F5C8B200479B24 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9E70F4313F5C8B200479B24 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9E70F4213F5C8B200479B24 /* JUInspectorView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9E70F4513F5C8B200479B24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E70F4613F5C8B200479B24 /* Cocoa.framework */,
+				E9E70F4813F5C8B200479B24 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9E70F4813F5C8B200479B24 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9E70F4913F5C8B200479B24 /* AppKit.framework */,
+				E9E70F4A13F5C8B200479B24 /* CoreData.framework */,
+				E9E70F4B13F5C8B200479B24 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E9E70F4C13F5C8B200479B24 /* JUInspectorView */ = {
+			isa = PBXGroup;
+			children = (
+				E9E70F5813F5C8B300479B24 /* AppDelegate.h */,
+				E9E70F5913F5C8B300479B24 /* AppDelegate.m */,
+				E9E70F5B13F5C8B300479B24 /* MainMenu.xib */,
+				E9E70F4D13F5C8B200479B24 /* Supporting Files */,
+			);
+			path = JUInspectorView;
+			sourceTree = "<group>";
+		};
+		E9E70F4D13F5C8B200479B24 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9E70F5213F5C8B300479B24 /* main.m */,
+				E9E70F4E13F5C8B200479B24 /* JUInspectorView-Info.plist */,
+				E9E70F5413F5C8B300479B24 /* JUInspectorView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E9E70F6313F5C94E00479B24 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E975D7F713F66D33006186C6 /* JUInspectorViewContainer.h */,
+				E975D7F813F66D33006186C6 /* JUInspectorViewContainer.m */,
+				E9E70F6413F5C9C200479B24 /* JUInspectorViewHeader.h */,
+				E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */,
+				E98DE5CB13F7D266009F3EE2 /* JUInspectorView.h */,
+				E98DE5CC13F7D266009F3EE2 /* JUInspectorView.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9E70F4113F5C8B200479B24 /* JUInspectorView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9E70F6013F5C8B300479B24 /* Build configuration list for PBXNativeTarget "JUInspectorView" */;
+			buildPhases = (
+				E9E70F3E13F5C8B200479B24 /* Sources */,
+				E9E70F3F13F5C8B200479B24 /* Frameworks */,
+				E9E70F4013F5C8B200479B24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JUInspectorView;
+			productName = JUInspectorView;
+			productReference = E9E70F4213F5C8B200479B24 /* JUInspectorView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9E70F3913F5C8B100479B24 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = E9E70F3C13F5C8B100479B24 /* Build configuration list for PBXProject "JUInspectorView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E9E70F3713F5C8B000479B24;
+			productRefGroup = E9E70F4313F5C8B200479B24 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9E70F4113F5C8B200479B24 /* JUInspectorView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9E70F4013F5C8B200479B24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E70F5D13F5C8B300479B24 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9E70F3E13F5C8B200479B24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E70F5313F5C8B300479B24 /* main.m in Sources */,
+				E9E70F5A13F5C8B300479B24 /* AppDelegate.m in Sources */,
+				E9E70F6613F5C9C200479B24 /* JUInspectorViewHeader.m in Sources */,
+				E975D7F913F66D33006186C6 /* JUInspectorViewContainer.m in Sources */,
+				E98DE5CD13F7D266009F3EE2 /* JUInspectorView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9E70F5B13F5C8B300479B24 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9E70F5C13F5C8B300479B24 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9E70F5E13F5C8B300479B24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E9E70F5F13F5C8B300479B24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E9E70F6113F5C8B300479B24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
+				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E9E70F6213F5C8B300479B24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
+				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9E70F3C13F5C8B100479B24 /* Build configuration list for PBXProject "JUInspectorView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E70F5E13F5C8B300479B24 /* Debug */,
+				E9E70F5F13F5C8B300479B24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9E70F6013F5C8B300479B24 /* Build configuration list for PBXNativeTarget "JUInspectorView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9E70F6113F5C8B300479B24 /* Debug */,
+				E9E70F6213F5C8B300479B24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9E70F3913F5C8B100479B24 /* Project object */;
+}
