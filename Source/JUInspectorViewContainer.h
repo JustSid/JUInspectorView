@@ -28,6 +28,7 @@
 - (void)arrangeViews;
 
 - (void)addInspectorView:(JUInspectorView *)view;
+- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index;
 - (void)removeInspectorView:(JUInspectorView *)view;
 
 @end

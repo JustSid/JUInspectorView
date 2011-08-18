@@ -21,8 +21,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [inspectorContainer addInspectorView:textInspector];
+    // The index and title of the inspectors are set via Interface Builder!    
     [inspectorContainer addInspectorView:buttonInspector];
+    [inspectorContainer addInspectorView:textInspector];
 }
 
 @end

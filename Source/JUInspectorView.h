@@ -24,16 +24,19 @@
 @public
     BOOL expanded;
     NSString *name;
+    NSInteger index;
     
 @private
-    JUInspectorViewHeader *header;
     NSView *body;
     
+    JUInspectorViewHeader *header;    
     JUInspectorViewContainer *container;
 }
 
-@property (nonatomic, retain) IBOutlet NSView *body;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, assign) NSInteger index;
+
+@property (nonatomic, retain) IBOutlet NSView *body;
 @property (nonatomic, assign, getter=isExpanded) BOOL expanded;
 
 - (void)expand;

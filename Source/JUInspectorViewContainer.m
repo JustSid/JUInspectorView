@@ -26,6 +26,9 @@
 
 - (void)arrangeViews
 {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
+    [inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    
     NSRect frame;
     frame.origin.x = 0.0;
     frame.origin.y = 0.0;
@@ -59,6 +62,12 @@
         [self addSubview:view];
         [self arrangeViews];
     }
+}
+
+- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index
+{
+    [view setIndex:index];
+    [self addInspectorView:view];
 }
 
 - (void)removeInspectorView:(JUInspectorView *)view

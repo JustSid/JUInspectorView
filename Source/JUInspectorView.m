@@ -26,7 +26,7 @@
 @end
 
 @implementation JUInspectorView
-@synthesize body, name, expanded, container;
+@synthesize name, index, body, expanded, container;
 
 - (void)expand
 {
@@ -130,6 +130,17 @@
 }
 
 
+
+- (NSComparisonResult)compare:(JUInspectorView *)otherView
+{
+    if(otherView.index > index)
+        return NSGreaterThanComparison;
+    
+    if(otherView.index < index)
+        return NSLessThanComparison;
+    
+    return NSEqualToComparison;
+}
 
 
 - (BOOL)isFlipped
