@@ -24,22 +24,37 @@
 
 @implementation JUInspectorViewContainer
 
+- (void)updateBounds
+{
+    CGFloat height = 0.0;
+    for(JUInspectorView *view in inspectorViews)
+    {
+        height += [view frame].size.height;
+    }
+    
+    NSRect frame;
+    frame.origin = [self frame].origin;
+    frame.size.width  = [self bounds].size.width;
+    frame.size.height = height;
+    
+    NSClipView *clipView = [[self enclosingScrollView] contentView];
+    if(clipView)
+    {
+        frame.size.width = [clipView documentRect].size.width;
+    }
+    
+    [super setFrame:frame];
+}
+
 - (void)arrangeViews
 {
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
     [inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-
-    BOOL collapsed = NO;
-    NSRect frame;
-    frame.origin.x = 0.0;
-    frame.origin.y = 0.0;
-    frame.size.width = [self bounds].size.width;
+    [self updateBounds];
     
-    if([[self superview] isKindOfClass:[NSClipView class]])
-    {
-        NSClipView *clipView = (NSClipView *)[self superview];
-        frame.size.width = [clipView documentRect].size.width;
-    }
+    
+    BOOL collapsed = NO;
+    NSRect frame = NSMakeRect(0.0, 0.0, [self bounds].size.width, 0.0);
     
     for(JUInspectorView *view in inspectorViews)
     {
@@ -53,10 +68,6 @@
         frame.origin.y += frame.size.height;        
         collapsed = ![view isExpanded];
     }
-    
-    frame.size.height = frame.origin.y;
-    frame.origin = [self frame].origin;
-    [super setFrame:frame];
 }
 
 
@@ -93,12 +104,13 @@
 }
 
 
+
+
 - (void)setFrame:(NSRect)frameRect
 {
     [super setFrame:frameRect];
     [self arrangeViews];
 }
-
 
 - (BOOL)isFlipped
 {
@@ -109,6 +121,7 @@
 {
     inspectorViews = [[NSMutableArray alloc] init];
 }
+
 
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -129,6 +142,12 @@
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    [inspectorViews release];
+    [super dealloc];
 }
 
 @end

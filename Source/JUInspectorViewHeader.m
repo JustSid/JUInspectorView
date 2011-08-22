@@ -52,7 +52,10 @@
     [path stroke];
 }
 
-
+- (void)mouseUp:(NSEvent *)theEvent
+{
+    [disclosureTriangle.target performSelector:[disclosureTriangle action]];
+}
 
 - (void)setupView
 {
