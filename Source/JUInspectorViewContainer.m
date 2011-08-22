@@ -29,18 +29,23 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
     [inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
+    BOOL collapsed = NO;
     NSRect frame;
     frame.origin.x = 0.0;
     frame.origin.y = 0.0;
     frame.size.width = [self bounds].size.width;
     
-    for(NSView *view in inspectorViews)
+    for(JUInspectorView *view in inspectorViews)
     {
+        if(collapsed)
+            frame.origin.y -= 1.0;
+        
         frame.size.height = [view frame].size.height;
         
         [view setFrame:frame];
         
-        frame.origin.y += frame.size.height;
+        frame.origin.y += frame.size.height;        
+        collapsed = ![view isExpanded];
     }
     
     frame.size.height = frame.origin.y;

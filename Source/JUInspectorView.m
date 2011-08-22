@@ -32,6 +32,8 @@
 {
     if(!expanded)
     {
+        expanded = YES;
+        
         NSRect frame = [body bounds];
         frame.origin = [self frame].origin;
         frame.size.height += [header bounds].size.height;
@@ -41,8 +43,6 @@
         [self setFrame:frame];
         [header setState:NSOnState];
         [container arrangeViews];
-        
-        expanded = YES;
     }
 }
 
@@ -50,6 +50,8 @@
 {
     if(expanded)
     {
+        expanded = NO;
+        
         NSRect frame;
         frame.origin = [self frame].origin;
         frame.size = [header frame].size;
@@ -59,8 +61,6 @@
         [self setFrame:frame];
         [header setState:NSOffState];
         [container arrangeViews];
-        
-        expanded = NO;
     }
 }
 
@@ -129,6 +129,11 @@
     [body setFrame:bodyRect];
 }
 
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"JUCollectionView \"%@\", expanded: %@", name, expanded ? @"YES" : @"NO"];
+}
 
 
 - (NSComparisonResult)compare:(JUInspectorView *)otherView
