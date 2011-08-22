@@ -28,12 +28,18 @@
 {
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
     [inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    
+
     BOOL collapsed = NO;
     NSRect frame;
     frame.origin.x = 0.0;
     frame.origin.y = 0.0;
     frame.size.width = [self bounds].size.width;
+    
+    if([[self superview] isKindOfClass:[NSClipView class]])
+    {
+        NSClipView *clipView = (NSClipView *)[self superview];
+        frame.size.width = [clipView documentRect].size.width;
+    }
     
     for(JUInspectorView *view in inspectorViews)
     {
@@ -50,8 +56,7 @@
     
     frame.size.height = frame.origin.y;
     frame.origin = [self frame].origin;
-    
-    [self setFrame:frame];
+    [super setFrame:frame];
 }
 
 
@@ -87,6 +92,12 @@
     }
 }
 
+
+- (void)setFrame:(NSRect)frameRect
+{
+    [super setFrame:frameRect];
+    [self arrangeViews];
+}
 
 
 - (BOOL)isFlipped

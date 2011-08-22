@@ -38,9 +38,9 @@
         frame.origin = [self frame].origin;
         frame.size.height += [header bounds].size.height;
         
-        [body setHidden:NO];
-        
         [self setFrame:frame];
+        
+        [body setHidden:NO];
         [header setState:NSOnState];
         [container arrangeViews];
     }
@@ -55,10 +55,10 @@
         NSRect frame;
         frame.origin = [self frame].origin;
         frame.size = [header frame].size;
-
-        [body setHidden:YES];
         
         [self setFrame:frame];
+        
+        [body setHidden:YES];
         [header setState:NSOffState];
         [container arrangeViews];
     }
