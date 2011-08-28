@@ -40,6 +40,7 @@
 {
     NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:gradientStartColor endingColor:gradientEndColor];
     [gradient drawInRect:[self bounds] angle:-90.0];
+    [gradient autorelease];
     
     [dashColor set];
     
