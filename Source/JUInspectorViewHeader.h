@@ -16,10 +16,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JUInspectorBaseView.h"
 
-@interface JUInspectorViewHeader : NSView
+@class JUInspectorViewHeader;
+
+@protocol JUInspectorViewHeaderDelegate
+
+-(void)headerClicked:(JUInspectorViewHeader *)headerView;
+
+@end
+
+@interface JUInspectorViewHeader : JUInspectorBaseView
 {    
-@private
+    id<JUInspectorViewHeaderDelegate> delegate;
+    
     NSButton *disclosureTriangle;
     NSTextField *nameField;
     
@@ -28,11 +38,15 @@
     NSColor *gradientEndColor;
 }
 
-@property (nonatomic, retain) NSColor *dashColor;
-@property (nonatomic, retain) NSColor *gradientStartColor;
-@property (nonatomic, retain) NSColor *gradientEndColor;
+@property (assign, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
 
-- (void)setState:(NSInteger)state;
-- (void)setTitle:(NSString *)title;
+@property (readonly) NSButton *disclosureTriangle;
+
+@property (retain, nonatomic) NSColor *dashColor;
+@property (retain, nonatomic) NSColor *gradientStartColor;
+@property (retain, nonatomic) NSColor *gradientEndColor;
+
+@property (assign, nonatomic) NSInteger state;
+@property (assign, nonatomic) NSString *title;
 
 @end

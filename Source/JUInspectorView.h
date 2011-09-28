@@ -16,30 +16,27 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JUInspectorBaseView.h"
 #import "JUInspectorViewHeader.h"
 #import "JUInspectorViewContainer.h"
 
-@interface JUInspectorView : NSView
+@interface JUInspectorView : JUInspectorBaseView<JUInspectorViewHeaderDelegate>
 {
-@public
     BOOL expanded;
-    NSString *name;
-    NSInteger index;
     
-@private
+    NSInteger index;
     NSView *body;
     
     JUInspectorViewHeader *header;    
     JUInspectorViewContainer *container;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, assign) NSInteger index;
+@property (assign, nonatomic) NSString *name;
+@property (assign, nonatomic) NSInteger index;
 
-@property (nonatomic, retain) IBOutlet NSView *body;
-@property (nonatomic, assign, getter=isExpanded) BOOL expanded;
+@property (retain, nonatomic) IBOutlet NSView *body;
+@property (assign, nonatomic) BOOL expanded;
 
-- (void)expand;
-- (void)collapse;
+@property (assign, nonatomic) JUInspectorViewContainer *container;
 
 @end
