@@ -16,19 +16,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JUInspectorBaseView.h"
 
 @class JUInspectorView;
 
-@interface JUInspectorViewContainer : NSView
+@interface JUInspectorViewContainer : JUInspectorBaseView
 {
-@private
     NSMutableArray *inspectorViews;
 }
 
 - (void)arrangeViews;
 
-- (void)addInspectorView:(JUInspectorView *)view;
-- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index;
+- (void)addInspectorView:(JUInspectorView *)view expanded:(BOOL)expanded;
+- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index expanded:(BOOL)expanded;
 - (void)removeInspectorView:(JUInspectorView *)view;
 
 @end

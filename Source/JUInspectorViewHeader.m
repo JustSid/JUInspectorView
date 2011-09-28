@@ -17,24 +17,94 @@
 
 #import "JUInspectorViewHeader.h"
 
-@interface JUInspectorViewHeader ()
-@property (nonatomic, readonly) NSButton *disclosureTriangle;
+@interface JUInspectorViewHeader(Private)
+
+-(void)setupView;
+-(void)disclosureClicked:(id)sender;
+
 @end
 
 @implementation JUInspectorViewHeader
-@synthesize dashColor, gradientStartColor, gradientEndColor, disclosureTriangle;
 
-- (void)setState:(NSInteger)state
+@synthesize dashColor, gradientStartColor, gradientEndColor, disclosureTriangle, state, title, delegate;
+
+#pragma mark - Init/Dealloc
+
+- (id)initWithCoder:(NSCoder *)decoder
 {
-    [disclosureTriangle setState:state];
+    return [self initWithFrame:NSZeroRect];
 }
 
-- (void)setTitle:(NSString *)title
+- (id)initWithFrame:(NSRect)frame
 {
-    [nameField setStringValue:title];
+    if((self = [super initWithFrame:NSMakeRect(0.0, 0.0, 222.0, 20.0)]))
+    {
+    }
+    
+    return self;
 }
 
 
+- (void)setupView
+{
+    dashColor = [[NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0] retain];
+    gradientStartColor = [[NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0] retain];
+    gradientEndColor = [[NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0] retain];
+    
+    disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
+    [disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
+    [disclosureTriangle setButtonType: NSPushOnPushOffButton];
+    [disclosureTriangle setTitle:nil];
+    [disclosureTriangle highlight:NO];
+    [disclosureTriangle setTarget:self];
+    [disclosureTriangle setAction:@selector(disclosureClicked:)];
+    
+    nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(20.0, 4.0, [self bounds].size.width - 8.0, 15.0)];
+    [nameField setEditable:NO];
+    [nameField setBackgroundColor:[NSColor clearColor]];
+    [nameField setBezeled:NO];
+    [nameField setFont:[NSFont boldSystemFontOfSize:12.0]];
+    [nameField setTextColor:[NSColor colorWithCalibratedRed:0.220 green:0.224 blue:0.231 alpha:1.0]];
+    
+    
+    [self addSubview:disclosureTriangle];
+    [self addSubview:nameField];
+}
+
+- (void)dealloc
+{
+    [dashColor release];
+    [gradientEndColor release];
+    [gradientStartColor release];
+    [disclosureTriangle release];
+    [nameField release];
+    
+    [super dealloc];
+}
+
+#pragma mark - Properties
+
+-(NSInteger)state
+{
+    return [disclosureTriangle state];
+}
+
+- (void)setState:(NSInteger)value
+{
+    [disclosureTriangle setState:value];
+}
+
+-(NSString *)title
+{
+    return [nameField stringValue];
+}
+
+- (void)setTitle:(NSString *)value
+{
+    [nameField setStringValue:value];
+}
+
+#pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -53,56 +123,17 @@
     [path stroke];
 }
 
+#pragma mark - Event handling
+
 - (void)mouseUp:(NSEvent *)theEvent
 {
-    [disclosureTriangle.target performSelector:[disclosureTriangle action]];
+    [delegate headerClicked:self];
 }
 
-- (void)setupView
-{
-    dashColor = [[NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0] retain];
-    gradientStartColor = [[NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0] retain];
-    gradientEndColor = [[NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0] retain];
-    
-    disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
-    [disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
-    [disclosureTriangle setButtonType: NSPushOnPushOffButton];
-    [disclosureTriangle setTitle:nil];
-    [disclosureTriangle highlight:NO];
-    
-    nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(20.0, 4.0, [self bounds].size.width - 8.0, 15.0)];
-    [nameField setEditable:NO];
-    [nameField setBackgroundColor:[NSColor clearColor]];
-    [nameField setBezeled:NO];
-    [nameField setFont:[NSFont boldSystemFontOfSize:12.0]];
-    [nameField setTextColor:[NSColor colorWithCalibratedRed:0.220 green:0.224 blue:0.231 alpha:1.0]];
-    
-    
-    [self addSubview:disclosureTriangle];
-    [self addSubview:nameField];
-}
 
-- (id)initWithCoder:(NSCoder *)decoder
+-(void)disclosureClicked:(id)sender
 {
-    return [self initWithFrame:NSZeroRect];
-}
-
-- (id)initWithFrame:(NSRect)frame
-{
-    if((self = [super initWithFrame:NSMakeRect(0.0, 0.0, 222.0, 20.0)]))
-    {
-        [self setupView];
-    }
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [disclosureTriangle release];
-    [nameField release];
-
-    [super dealloc];
+    [delegate headerClicked:self];
 }
 
 @end

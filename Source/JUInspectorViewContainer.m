@@ -19,10 +19,41 @@
 #import "JUInspectorView.h"
 
 @interface JUInspectorView (JUInspectorViewPrivate)
-@property (nonatomic, retain) JUInspectorViewContainer *container;
+
+-(void)updateBounds;
+
 @end
 
 @implementation JUInspectorViewContainer
+
+#pragma mark - Init/Dealloc
+
+- (void)setupView
+{
+    inspectorViews = [[NSMutableArray alloc] init];
+}
+
+- (void)dealloc
+{
+    [inspectorViews release];
+    [super dealloc];
+}
+
+#pragma mark - NSView override
+
+- (void)setFrame:(NSRect)frameRect
+{
+    [super setFrame:frameRect];
+    [self arrangeViews];
+}
+
+- (BOOL)isFlipped
+{
+    return YES;
+}
+
+
+#pragma mark - Private methods
 
 - (void)updateBounds
 {
@@ -66,14 +97,14 @@
         [view setFrame:frame];
         
         frame.origin.y += frame.size.height;        
-        collapsed = ![view isExpanded];
+        collapsed = !view.expanded;
     }
 }
 
 
+#pragma mark - Add/Remove Inspectors
 
-
-- (void)addInspectorView:(JUInspectorView *)view
+- (void)addInspectorView:(JUInspectorView *)view expanded:(BOOL)expanded
 {
     if(![inspectorViews containsObject:view])
     {
@@ -82,13 +113,15 @@
         [inspectorViews addObject:view];
         [self addSubview:view];
         [self arrangeViews];
+        
+        view.expanded=expanded;
     }
 }
 
-- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index
+- (void)addInspectorView:(JUInspectorView *)view atIndex:(NSInteger)index expanded:(BOOL)expanded
 {
     [view setIndex:index];
-    [self addInspectorView:view];
+    [self addInspectorView:view expanded:expanded];
 }
 
 - (void)removeInspectorView:(JUInspectorView *)view
@@ -104,50 +137,5 @@
 }
 
 
-
-
-- (void)setFrame:(NSRect)frameRect
-{
-    [super setFrame:frameRect];
-    [self arrangeViews];
-}
-
-- (BOOL)isFlipped
-{
-    return YES;
-}
-
-- (void)setupView
-{
-    inspectorViews = [[NSMutableArray alloc] init];
-}
-
-
-
-- (id)initWithCoder:(NSCoder *)decoder
-{
-    if((self = [super initWithCoder:decoder]))
-    {
-        [self setupView];
-    }
-    
-    return self;
-}
-
-- (id)initWithFrame:(NSRect)frame
-{
-    if((self = [super initWithFrame:frame]))
-    {
-        [self setupView];
-    }
-    
-    return self;
-}
-
-- (void)dealloc
-{
-    [inspectorViews release];
-    [super dealloc];
-}
 
 @end
