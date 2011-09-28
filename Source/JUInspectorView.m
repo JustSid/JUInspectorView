@@ -17,85 +17,78 @@
 
 #import "JUInspectorView.h"
 
-@interface JUInspectorViewHeader (JUInspectorViewHeaderPrivate)
-@property (nonatomic, readonly) NSButton *disclosureTriangle;
-@end
-
-@interface JUInspectorView ()
-@property (nonatomic, retain) JUInspectorViewContainer *container;
-@end
-
 @implementation JUInspectorView
+
 @synthesize name, index, body, expanded, container;
 
-- (void)expand
+#pragma mark - Init/Dealloc
+
+- (void)setupView
+{   
+    header = [[JUInspectorViewHeader alloc] initWithFrame:NSZeroRect];
+    [header setAutoresizingMask:NSViewWidthSizable];
+    header.delegate=self;
+    
+    [self addSubview:header];
+    [self setExpanded:YES];
+}
+
+- (void)dealloc
 {
-    if(!expanded)
+    [header release];
+    [body release];
+    
+    [super dealloc];
+}
+
+#pragma mark - Properties
+
+- (void)setExpanded:(BOOL)value
+{
+    if (expanded==value)
+        return;
+    
+    expanded=value;
+ 
+    NSRect frame;
+    
+    if (expanded)
     {
-        expanded = YES;
-        
-        NSRect frame = [body bounds];
+        frame = [body bounds];
         frame.origin = [self frame].origin;
         frame.size.height += [header bounds].size.height;
-        
-        [self setFrame:frame];
         
         [body setHidden:NO];
         [header setState:NSOnState];
         [container arrangeViews];
     }
-}
-
-- (void)collapse
-{
-    if(expanded)
+    else
     {
-        expanded = NO;
-        
-        NSRect frame;
         frame.origin = [self frame].origin;
         frame.size = [header frame].size;
         
-        [self setFrame:frame];
-        
         [body setHidden:YES];
         [header setState:NSOffState];
-        [container arrangeViews];
     }
-}
-
-- (void)setExpanded:(BOOL)texpanded
-{
-    if(texpanded)
-    {
-        [self expand];
-    }
-    else
-    {
-        [self collapse];
-    }
-}
-
-- (void)toggleExpandation
-{
-    [self setExpanded:!expanded];
-}
-
-
-
-
-- (void)setName:(NSString *)newName
-{
-    [name autorelease];
-    name = [newName retain];
     
-    [header setTitle:name];
+    [self setFrame:frame];
+    [container arrangeViews];
+}
+
+-(NSString *)name
+{
+    return [header title];
+}
+
+- (void)setName:(NSString *)value
+{
+    [header setTitle:value];
 }
 
 - (void)setBody:(NSView *)pbody
 {
     [body removeFromSuperview];
-    [body autorelease];
+    [body release];
     
     body = [pbody retain];
     
@@ -116,9 +109,10 @@
     
     [self addSubview:body];
     
-    expanded = !expanded;
-    [self setExpanded:!expanded];
+    self.expanded = !expanded;
 }
+
+#pragma mark - NSView Overrides
 
 - (void)setFrame:(NSRect)frameRect
 {
@@ -128,25 +122,6 @@
     bodyRect.size.width = frameRect.size.width;
     [body setFrame:bodyRect];
 }
-
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"JUCollectionView \"%@\", expanded: %@", name, expanded ? @"YES" : @"NO"];
-}
-
-
-- (NSComparisonResult)compare:(JUInspectorView *)otherView
-{
-    if(otherView.index > index)
-        return NSGreaterThanComparison;
-    
-    if(otherView.index < index)
-        return NSLessThanComparison;
-    
-    return NSEqualToComparison;
-}
-
 
 - (BOOL)isFlipped
 {
@@ -169,44 +144,28 @@
     }
 }
 
-- (void)setupViews
+- (NSString *)description
 {
-    header = [[JUInspectorViewHeader alloc] initWithFrame:NSZeroRect];
-    [header setAutoresizingMask:NSViewWidthSizable];
-    [[header disclosureTriangle] setAction:@selector(toggleExpandation)];
-    [[header disclosureTriangle] setTarget:self];
-    
-    [self addSubview:header];
-    [self setExpanded:YES];
+    return [NSString stringWithFormat:@"JUCollectionView \"%@\", expanded: %@", self.name, expanded ? @"YES" : @"NO"];
 }
 
-- (id)initWithFrame:(NSRect)frame
+- (NSComparisonResult)compare:(JUInspectorView *)otherView
 {
-    if((self = [super initWithFrame:frame]))
-    {
-        [self setupViews];
-    }
+    if(otherView.index > index)
+        return NSGreaterThanComparison;
     
-    return self;
+    if(otherView.index < index)
+        return NSLessThanComparison;
+    
+    return NSEqualToComparison;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
+#pragma mark - JUInspectorViewHeaderDelegate
+
+-(void)headerClicked:(JUInspectorViewHeader *)headerView
 {
-    if((self = [super initWithCoder:decoder]))
-    {
-        [self setupViews];
-    }
-    
-    return self;
+    self.expanded=!expanded;
 }
 
-- (void)dealloc
-{
-    [header release];
-    [body release];
-    [name release];
-    
-    [super dealloc];
-}
 
 @end

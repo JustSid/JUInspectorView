@@ -14,6 +14,7 @@
 		E9E70F5A13F5C8B300479B24 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E70F5913F5C8B300479B24 /* AppDelegate.m */; };
 		E9E70F5D13F5C8B300479B24 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9E70F5B13F5C8B300479B24 /* MainMenu.xib */; };
 		E9E70F6613F5C9C200479B24 /* JUInspectorViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */; };
+		FFF7FB0214333BC600607DE4 /* JUInspectorBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF7FB0114333BC600607DE4 /* JUInspectorBaseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		E9E70F5C13F5C8B300479B24 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E9E70F6413F5C9C200479B24 /* JUInspectorViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorViewHeader.h; sourceTree = "<group>"; };
 		E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorViewHeader.m; sourceTree = "<group>"; };
+		FFF7FB0014333BC600607DE4 /* JUInspectorBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUInspectorBaseView.h; sourceTree = "<group>"; };
+		FFF7FB0114333BC600607DE4 /* JUInspectorBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUInspectorBaseView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				E9E70F6513F5C9C200479B24 /* JUInspectorViewHeader.m */,
 				E98DE5CB13F7D266009F3EE2 /* JUInspectorView.h */,
 				E98DE5CC13F7D266009F3EE2 /* JUInspectorView.m */,
+				FFF7FB0014333BC600607DE4 /* JUInspectorBaseView.h */,
+				FFF7FB0114333BC600607DE4 /* JUInspectorBaseView.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 				E9E70F6613F5C9C200479B24 /* JUInspectorViewHeader.m in Sources */,
 				E975D7F913F66D33006186C6 /* JUInspectorViewContainer.m in Sources */,
 				E98DE5CD13F7D266009F3EE2 /* JUInspectorView.m in Sources */,
+				FFF7FB0214333BC600607DE4 /* JUInspectorBaseView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +210,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				BUILD_STYLE = Debug;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -230,6 +237,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				BUILD_STYLE = Release;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -247,9 +255,11 @@
 		E9E70F6113F5C8B300479B24 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_STYLE = Debug;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
 				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -258,9 +268,11 @@
 		E9E70F6213F5C8B300479B24 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_STYLE = Release;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
 				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
