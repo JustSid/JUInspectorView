@@ -6,11 +6,9 @@
 //  Copyright 2011 Interfacelab LLC. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-
-@interface JUInspectorBaseView : NSView {
-}
+@interface JUInspectorBaseView : NSView
 
 -(void)setupView;
 
