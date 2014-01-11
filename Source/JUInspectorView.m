@@ -17,12 +17,17 @@
 
 #import "JUInspectorView.h"
 
+const CGFloat JUInspectorViewDashInset = 18.0;
+const CGFloat JUInspectorViewContentInset = 36.0;
+
 @implementation JUInspectorView
 
 #pragma mark - Init/Dealloc
 
 - (void)setupView
 {
+    self.dashColor = [NSColor lightGrayColor];
+
     self.header = [[JUInspectorViewHeader alloc] initWithFrame:NSZeroRect];
     [self.header setAutoresizingMask:NSViewWidthSizable];
     self.header.delegate=self;
@@ -92,7 +97,7 @@
     else
     {
         NSRect bodyFrame = [_body bounds];
-        bodyFrame.origin.y = -bodyFrame.size.height + [self.header bounds].size.height;
+        bodyFrame.origin.y = -bodyFrame.size.height + [self.header bounds].size.height - 1.0;
         
         [_body setFrame:bodyFrame];
     }
@@ -109,7 +114,8 @@
     [super setFrame:frameRect];
     
     NSRect bodyRect = [self.body frame];
-    bodyRect.size.width = frameRect.size.width;
+    bodyRect.origin.x = JUInspectorViewContentInset;
+    bodyRect.size.width = frameRect.size.width - (JUInspectorViewContentInset * 2.0);
     [self.body setFrame:bodyRect];
 }
 
@@ -120,18 +126,14 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    if(self.expanded)
-    {
-        [[self.header dashColor] set];
-        
-        NSRect dashRect = [self bounds];
-        dashRect.origin.x -= 1.0;
-        dashRect.size.width += 2.0;
-        
-        NSBezierPath *path = [NSBezierPath bezierPathWithRect:dashRect];
-        [path setLineWidth:1.0];
-        [path stroke];
-    }
+    [self.dashColor set];
+
+    NSBezierPath *bottomOfFramePath = [NSBezierPath bezierPath];
+    [bottomOfFramePath moveToPoint:CGPointMake(CGRectGetMinX(self.bounds) + JUInspectorViewDashInset, CGRectGetHeight(self.bounds))];
+    [bottomOfFramePath lineToPoint:CGPointMake(CGRectGetMaxX(self.bounds) - JUInspectorViewDashInset, CGRectGetHeight(self.bounds))];
+
+    [bottomOfFramePath setLineWidth:1.0];
+    [bottomOfFramePath stroke];
 }
 
 - (NSString *)description

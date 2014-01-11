@@ -47,6 +47,12 @@
     return YES;
 }
 
+- (void)drawRect:(NSRect)dirtyRect {
+    [[NSColor whiteColor] set];
+    NSRectFill(dirtyRect);
+    [super drawRect:dirtyRect];
+}
+
 
 #pragma mark - Private methods
 
@@ -84,9 +90,6 @@
     
     for(JUInspectorView *view in self.inspectorViews)
     {
-        if(collapsed)
-            frame.origin.y -= 1.0;
-        
         frame.size.height = [view frame].size.height;
         
         [view setFrame:frame];

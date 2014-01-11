@@ -33,10 +33,6 @@
 @property (strong, nonatomic, readonly) NSButton *disclosureTriangle;
 @property (strong, nonatomic) NSTextField *nameField;
 
-@property (strong, nonatomic) NSColor *dashColor;
-@property (strong, nonatomic) NSColor *gradientStartColor;
-@property (strong, nonatomic) NSColor *gradientEndColor;
-
 @property (assign, nonatomic) NSInteger state;
 @property (unsafe_unretained, nonatomic) NSString *title;
 

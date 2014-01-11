@@ -35,21 +35,13 @@
 
 - (id)initWithFrame:(NSRect)frame
 {
-    if((self = [super initWithFrame:NSMakeRect(0.0, 0.0, 222.0, 20.0)]))
-    {
-    }
-    
-    return self;
+    return [super initWithFrame:NSMakeRect(0.0, 0.0, 222.0, 40.0)];
 }
 
 
 - (void)setupView
 {
-    self.dashColor = [NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0];
-    self.gradientStartColor = [NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0];
-    self.gradientEndColor = [NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0];
-    
-    _disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
+    _disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(21.0, 14.0, 13.0, 13.0)];
     [self.disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
     [self.disclosureTriangle setButtonType: NSPushOnPushOffButton];
     [self.disclosureTriangle setTitle:nil];
@@ -57,13 +49,12 @@
     [self.disclosureTriangle setTarget:self];
     [self.disclosureTriangle setAction:@selector(disclosureClicked:)];
     
-    self.nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(20.0, 4.0, [self bounds].size.width - 8.0, 15.0)];
+    self.nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(38.0, 11.0, [self bounds].size.width - 8.0, 15.0)];
     [self.nameField setEditable:NO];
     [self.nameField setBackgroundColor:[NSColor clearColor]];
     [self.nameField setBezeled:NO];
-    [self.nameField setFont:[NSFont boldSystemFontOfSize:12.0]];
+    [self.nameField setFont:[NSFont boldSystemFontOfSize:11.0]];
     [self.nameField setTextColor:[NSColor colorWithCalibratedRed:0.220 green:0.224 blue:0.231 alpha:1.0]];
-    
     
     [self addSubview:self.disclosureTriangle];
     [self addSubview:self.nameField];
@@ -90,24 +81,6 @@
 - (void)setTitle:(NSString *)value
 {
     [self.nameField setStringValue:value];
-}
-
-#pragma mark - Drawing
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:self.gradientStartColor endingColor:self.gradientEndColor];
-    [gradient drawInRect:[self bounds] angle:-90.0];
-    
-    [self.dashColor set];
-    
-    NSRect dashRect = [self bounds];
-    dashRect.origin.x -= 1.0;
-    dashRect.size.width += 2.0;
-    
-    NSBezierPath *path = [NSBezierPath bezierPathWithRect:dashRect];
-    [path setLineWidth:1.0];
-    [path stroke];
 }
 
 #pragma mark - Event handling

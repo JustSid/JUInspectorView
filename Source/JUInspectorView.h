@@ -25,6 +25,7 @@
 @property (unsafe_unretained, nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger index;
 
+@property (strong, nonatomic) NSColor *dashColor;
 @property (strong, nonatomic) IBOutlet NSView *body;
 @property (assign, nonatomic) BOOL expanded;
 
