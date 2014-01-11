@@ -21,22 +21,14 @@
 #import "JUInspectorViewContainer.h"
 
 @interface JUInspectorView : JUInspectorBaseView<JUInspectorViewHeaderDelegate>
-{
-    BOOL expanded;
-    
-    NSInteger index;
-    NSView *body;
-    
-    JUInspectorViewHeader *header;    
-    JUInspectorViewContainer *container;
-}
 
-@property (assign, nonatomic) NSString *name;
+@property (unsafe_unretained, nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger index;
 
-@property (retain, nonatomic) IBOutlet NSView *body;
+@property (strong, nonatomic) IBOutlet NSView *body;
 @property (assign, nonatomic) BOOL expanded;
 
-@property (assign, nonatomic) JUInspectorViewContainer *container;
+@property (strong, nonatomic) JUInspectorViewHeader *header;
+@property (unsafe_unretained, nonatomic) JUInspectorViewContainer *container;
 
 @end

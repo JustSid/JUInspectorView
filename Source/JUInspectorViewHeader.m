@@ -47,9 +47,9 @@
 
 - (void)setupView
 {
-    dashColor = [[NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0] retain];
-    gradientStartColor = [[NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0] retain];
-    gradientEndColor = [[NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0] retain];
+    dashColor = [NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0];
+    gradientStartColor = [NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0];
+    gradientEndColor = [NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0];
     
     disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
     [disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
@@ -71,16 +71,6 @@
     [self addSubview:nameField];
 }
 
-- (void)dealloc
-{
-    [dashColor release];
-    [gradientEndColor release];
-    [gradientStartColor release];
-    [disclosureTriangle release];
-    [nameField release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Properties
 
@@ -110,7 +100,6 @@
 {
     NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:gradientStartColor endingColor:gradientEndColor];
     [gradient drawInRect:[self bounds] angle:-90.0];
-    [gradient autorelease];
     
     [dashColor set];
     

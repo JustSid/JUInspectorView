@@ -27,26 +27,17 @@
 @end
 
 @interface JUInspectorViewHeader : JUInspectorBaseView
-{    
-    id<JUInspectorViewHeaderDelegate> delegate;
-    
-    NSButton *disclosureTriangle;
-    NSTextField *nameField;
-    
-    NSColor *dashColor;
-    NSColor *gradientStartColor;
-    NSColor *gradientEndColor;
-}
 
-@property (assign, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
+@property (unsafe_unretained, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
 
-@property (readonly) NSButton *disclosureTriangle;
+@property (strong, nonatomic, readonly) NSButton *disclosureTriangle;
+@property (strong, nonatomic) NSTextField *nameField;
 
-@property (retain, nonatomic) NSColor *dashColor;
-@property (retain, nonatomic) NSColor *gradientStartColor;
-@property (retain, nonatomic) NSColor *gradientEndColor;
+@property (strong, nonatomic) NSColor *dashColor;
+@property (strong, nonatomic) NSColor *gradientStartColor;
+@property (strong, nonatomic) NSColor *gradientEndColor;
 
 @property (assign, nonatomic) NSInteger state;
-@property (assign, nonatomic) NSString *title;
+@property (unsafe_unretained, nonatomic) NSString *title;
 
 @end

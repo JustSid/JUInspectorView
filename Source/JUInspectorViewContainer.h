@@ -21,9 +21,8 @@
 @class JUInspectorView;
 
 @interface JUInspectorViewContainer : JUInspectorBaseView
-{
-    NSMutableArray *inspectorViews;
-}
+
+@property (strong, nonatomic) NSMutableArray *inspectorViews;
 
 - (void)arrangeViews;
 

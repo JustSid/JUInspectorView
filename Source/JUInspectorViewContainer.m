@@ -33,11 +33,6 @@
     inspectorViews = [[NSMutableArray alloc] init];
 }
 
-- (void)dealloc
-{
-    [inspectorViews release];
-    [super dealloc];
-}
 
 #pragma mark - NSView override
 

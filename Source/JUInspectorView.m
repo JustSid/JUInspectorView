@@ -33,13 +33,6 @@
     [self setExpanded:YES];
 }
 
-- (void)dealloc
-{
-    [header release];
-    [body release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Properties
 
@@ -88,9 +81,8 @@
 - (void)setBody:(NSView *)pbody
 {
     [body removeFromSuperview];
-    [body release];
     
-    body = [pbody retain];
+    body = pbody;
     
     if([body isFlipped])
     {
