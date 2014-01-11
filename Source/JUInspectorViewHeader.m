@@ -26,8 +26,6 @@
 
 @implementation JUInspectorViewHeader
 
-@synthesize dashColor, gradientStartColor, gradientEndColor, disclosureTriangle, state, title, delegate;
-
 #pragma mark - Init/Dealloc
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -47,28 +45,28 @@
 
 - (void)setupView
 {
-    dashColor = [NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0];
-    gradientStartColor = [NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0];
-    gradientEndColor = [NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0];
+    self.dashColor = [NSColor colorWithCalibratedRed:0.502 green:0.502 blue:0.502 alpha:1.0];
+    self.gradientStartColor = [NSColor colorWithCalibratedRed:0.922 green:0.925 blue:0.976 alpha:1.0];
+    self.gradientEndColor = [NSColor colorWithCalibratedRed:0.741 green:0.749 blue:0.831 alpha:1.0];
     
-    disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
-    [disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
-    [disclosureTriangle setButtonType: NSPushOnPushOffButton];
-    [disclosureTriangle setTitle:nil];
-    [disclosureTriangle highlight:NO];
-    [disclosureTriangle setTarget:self];
-    [disclosureTriangle setAction:@selector(disclosureClicked:)];
+    _disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(5.0, 4.0, 13.0, 13.0)];
+    [self.disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
+    [self.disclosureTriangle setButtonType: NSPushOnPushOffButton];
+    [self.disclosureTriangle setTitle:nil];
+    [self.disclosureTriangle highlight:NO];
+    [self.disclosureTriangle setTarget:self];
+    [self.disclosureTriangle setAction:@selector(disclosureClicked:)];
     
-    nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(20.0, 4.0, [self bounds].size.width - 8.0, 15.0)];
-    [nameField setEditable:NO];
-    [nameField setBackgroundColor:[NSColor clearColor]];
-    [nameField setBezeled:NO];
-    [nameField setFont:[NSFont boldSystemFontOfSize:12.0]];
-    [nameField setTextColor:[NSColor colorWithCalibratedRed:0.220 green:0.224 blue:0.231 alpha:1.0]];
+    self.nameField = [[NSTextField alloc] initWithFrame:NSMakeRect(20.0, 4.0, [self bounds].size.width - 8.0, 15.0)];
+    [self.nameField setEditable:NO];
+    [self.nameField setBackgroundColor:[NSColor clearColor]];
+    [self.nameField setBezeled:NO];
+    [self.nameField setFont:[NSFont boldSystemFontOfSize:12.0]];
+    [self.nameField setTextColor:[NSColor colorWithCalibratedRed:0.220 green:0.224 blue:0.231 alpha:1.0]];
     
     
-    [self addSubview:disclosureTriangle];
-    [self addSubview:nameField];
+    [self addSubview:self.disclosureTriangle];
+    [self addSubview:self.nameField];
 }
 
 
@@ -76,32 +74,32 @@
 
 -(NSInteger)state
 {
-    return [disclosureTriangle state];
+    return [self.disclosureTriangle state];
 }
 
 - (void)setState:(NSInteger)value
 {
-    [disclosureTriangle setState:value];
+    [self.disclosureTriangle setState:value];
 }
 
 -(NSString *)title
 {
-    return [nameField stringValue];
+    return [self.nameField stringValue];
 }
 
 - (void)setTitle:(NSString *)value
 {
-    [nameField setStringValue:value];
+    [self.nameField setStringValue:value];
 }
 
 #pragma mark - Drawing
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:gradientStartColor endingColor:gradientEndColor];
+    NSGradient *gradient = [[NSGradient alloc] initWithStartingColor:self.gradientStartColor endingColor:self.gradientEndColor];
     [gradient drawInRect:[self bounds] angle:-90.0];
     
-    [dashColor set];
+    [self.dashColor set];
     
     NSRect dashRect = [self bounds];
     dashRect.origin.x -= 1.0;
@@ -116,13 +114,13 @@
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-    [delegate headerClicked:self];
+    [self.delegate headerClicked:self];
 }
 
 
 -(void)disclosureClicked:(id)sender
 {
-    [delegate headerClicked:self];
+    [self.delegate headerClicked:self];
 }
 
 @end

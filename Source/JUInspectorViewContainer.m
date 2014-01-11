@@ -30,7 +30,7 @@
 
 - (void)setupView
 {
-    inspectorViews = [[NSMutableArray alloc] init];
+    self.inspectorViews = [[NSMutableArray alloc] init];
 }
 
 
@@ -53,7 +53,7 @@
 - (void)updateBounds
 {
     CGFloat height = 0.0;
-    for(JUInspectorView *view in inspectorViews)
+    for(JUInspectorView *view in self.inspectorViews)
     {
         height += [view frame].size.height;
     }
@@ -75,14 +75,14 @@
 - (void)arrangeViews
 {
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
-    [inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [self.inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     [self updateBounds];
     
     
     BOOL collapsed = NO;
     NSRect frame = NSMakeRect(0.0, 0.0, [self bounds].size.width, 0.0);
     
-    for(JUInspectorView *view in inspectorViews)
+    for(JUInspectorView *view in self.inspectorViews)
     {
         if(collapsed)
             frame.origin.y -= 1.0;
@@ -101,11 +101,11 @@
 
 - (void)addInspectorView:(JUInspectorView *)view expanded:(BOOL)expanded
 {
-    if(![inspectorViews containsObject:view])
+    if(![self.inspectorViews containsObject:view])
     {
         [view setContainer:self];
         
-        [inspectorViews addObject:view];
+        [self.inspectorViews addObject:view];
         [self addSubview:view];
         [self arrangeViews];
         
@@ -121,11 +121,11 @@
 
 - (void)removeInspectorView:(JUInspectorView *)view
 {
-    if([inspectorViews containsObject:view])
+    if([self.inspectorViews containsObject:view])
     {
         [view setContainer:self];
         
-        [inspectorViews removeObject:view];
+        [self.inspectorViews removeObject:view];
         [view removeFromSuperview];
         [self arrangeViews];
     }
