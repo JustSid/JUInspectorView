@@ -75,7 +75,7 @@
 - (void)arrangeViews
 {
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
-    [self.inspectorViews sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [self.inspectorViews sortUsingDescriptors:@[sortDescriptor]];
     [self updateBounds];
     
     
