@@ -26,7 +26,7 @@
 @property (assign, nonatomic) NSInteger index;
 
 @property (strong, nonatomic) NSColor *dashColor;
-@property (strong, nonatomic) IBOutlet NSView *body;
+@property (weak, nonatomic) IBOutlet NSView *body;
 @property (assign, nonatomic) BOOL expanded;
 
 @property (strong, nonatomic) JUInspectorViewHeader *header;
