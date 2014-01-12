@@ -83,9 +83,7 @@
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
     [self.inspectorViews sortUsingDescriptors:@[sortDescriptor]];
     [self updateBounds];
-    
-    
-    BOOL collapsed = NO;
+
     NSRect frame = NSMakeRect(0.0, 0.0, [self bounds].size.width, 0.0);
     
     for(JUInspectorView *view in self.inspectorViews)
@@ -94,8 +92,7 @@
         
         [view setFrame:frame];
         
-        frame.origin.y += frame.size.height;        
-        collapsed = !view.expanded;
+        frame.origin.y += frame.size.height;
     }
 }
 
