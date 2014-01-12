@@ -28,12 +28,12 @@
 
 @interface JUInspectorViewHeader : JUInspectorBaseView
 
-@property (unsafe_unretained, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
+@property (weak, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
 
 @property (strong, nonatomic, readonly) NSButton *disclosureTriangle;
 @property (strong, nonatomic) NSTextField *nameField;
 
 @property (assign, nonatomic) NSInteger state;
-@property (unsafe_unretained, nonatomic) NSString *title;
+@property (weak, nonatomic) NSString *title;
 
 @end

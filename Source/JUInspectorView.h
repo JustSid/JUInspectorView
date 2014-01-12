@@ -22,7 +22,7 @@
 
 @interface JUInspectorView : JUInspectorBaseView<JUInspectorViewHeaderDelegate>
 
-@property (unsafe_unretained, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger index;
 
 @property (strong, nonatomic) NSColor *dashColor;
@@ -30,6 +30,6 @@
 @property (assign, nonatomic) BOOL expanded;
 
 @property (strong, nonatomic) JUInspectorViewHeader *header;
-@property (unsafe_unretained, nonatomic) JUInspectorViewContainer *container;
+@property (weak, nonatomic) JUInspectorViewContainer *container;
 
 @end
