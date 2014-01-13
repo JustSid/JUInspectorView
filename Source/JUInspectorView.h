@@ -15,28 +15,21 @@
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #import "JUInspectorBaseView.h"
 #import "JUInspectorViewHeader.h"
 #import "JUInspectorViewContainer.h"
 
 @interface JUInspectorView : JUInspectorBaseView<JUInspectorViewHeaderDelegate>
-{
-    BOOL expanded;
-    
-    NSInteger index;
-    NSView *body;
-    
-    JUInspectorViewHeader *header;    
-    JUInspectorViewContainer *container;
-}
 
-@property (assign, nonatomic) NSString *name;
+@property (weak, nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger index;
 
-@property (retain, nonatomic) IBOutlet NSView *body;
+@property (strong, nonatomic) NSColor *dashColor;
+@property (weak, nonatomic) IBOutlet NSView *body;
 @property (assign, nonatomic) BOOL expanded;
 
-@property (assign, nonatomic) JUInspectorViewContainer *container;
+@property (strong, nonatomic) JUInspectorViewHeader *header;
+@property (weak, nonatomic) JUInspectorViewContainer *container;
 
 @end

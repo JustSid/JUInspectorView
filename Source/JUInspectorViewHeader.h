@@ -15,7 +15,7 @@
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #import "JUInspectorBaseView.h"
 
 @class JUInspectorViewHeader;
@@ -27,26 +27,13 @@
 @end
 
 @interface JUInspectorViewHeader : JUInspectorBaseView
-{    
-    id<JUInspectorViewHeaderDelegate> delegate;
-    
-    NSButton *disclosureTriangle;
-    NSTextField *nameField;
-    
-    NSColor *dashColor;
-    NSColor *gradientStartColor;
-    NSColor *gradientEndColor;
-}
 
-@property (assign, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
+@property (weak, nonatomic) id<JUInspectorViewHeaderDelegate> delegate;
 
-@property (readonly) NSButton *disclosureTriangle;
-
-@property (retain, nonatomic) NSColor *dashColor;
-@property (retain, nonatomic) NSColor *gradientStartColor;
-@property (retain, nonatomic) NSColor *gradientEndColor;
+@property (strong, nonatomic, readonly) NSButton *disclosureTriangle;
+@property (strong, nonatomic) NSTextField *nameField;
 
 @property (assign, nonatomic) NSInteger state;
-@property (assign, nonatomic) NSString *title;
+@property (weak, nonatomic) NSString *title;
 
 @end

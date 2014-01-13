@@ -8,7 +8,6 @@
 
 #import "JUInspectorBaseView.h"
 
-
 @implementation JUInspectorBaseView
 
 #pragma mark - Init/Dealloc

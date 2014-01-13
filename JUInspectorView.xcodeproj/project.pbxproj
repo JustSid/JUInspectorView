@@ -149,6 +149,8 @@
 /* Begin PBXProject section */
 		E9E70F3913F5C8B100479B24 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E9E70F3C13F5C8B100479B24 /* Build configuration list for PBXProject "JUInspectorView" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -256,10 +258,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_STYLE = Debug;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
 				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -269,10 +273,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_STYLE = Release;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JUInspectorView/JUInspectorView-Prefix.pch";
 				INFOPLIST_FILE = "JUInspectorView/JUInspectorView-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

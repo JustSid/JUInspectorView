@@ -15,15 +15,14 @@
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #import "JUInspectorBaseView.h"
 
 @class JUInspectorView;
 
 @interface JUInspectorViewContainer : JUInspectorBaseView
-{
-    NSMutableArray *inspectorViews;
-}
+
+@property (strong, nonatomic) NSMutableArray *inspectorViews;
 
 - (void)arrangeViews;
 
