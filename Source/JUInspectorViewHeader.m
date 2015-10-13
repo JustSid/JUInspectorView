@@ -44,7 +44,7 @@
     _disclosureTriangle = [[NSButton alloc] initWithFrame:NSMakeRect(21.0, 14.0, 13.0, 13.0)];
     [self.disclosureTriangle setBezelStyle:NSDisclosureBezelStyle];
     [self.disclosureTriangle setButtonType: NSPushOnPushOffButton];
-    [self.disclosureTriangle setTitle:nil];
+    [self.disclosureTriangle setTitle:@""];
     [self.disclosureTriangle highlight:NO];
     [self.disclosureTriangle setTarget:self];
     [self.disclosureTriangle setAction:@selector(disclosureClicked:)];
